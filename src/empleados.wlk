@@ -15,7 +15,7 @@ object baigorria {
 	method empanadasVendidas(){ return empanadasVendidas }
 	
 	method empanadasVendidas(cantidadEmpanadas) { 
-		empanadasVendidas = cantidadEmpanadas
+		empanadasVendidas += cantidadEmpanadas
 		self.calculoSueldo()
 	}
 	method calculoSueldo() { sueldo = empanadasVendidas * precioPorEmpanada}
