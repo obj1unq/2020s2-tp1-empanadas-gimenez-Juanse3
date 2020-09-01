@@ -1,11 +1,30 @@
 object galvan { 
 	var sueldo = 15000
-	
+	var deuda = 0
+	var dinero = 0
 	
 	method sueldo() { return sueldo }
+	method deuda() { return deuda }
+	method dinero() { return dinero }
 	
 	method cambiarSueldo(nuevoSueldo) { sueldo = nuevoSueldo }
-	method cobrarMes() {  }
+	method cobrarSueldo() { 
+		dinero += (sueldo - deuda)
+		if ( dinero > 0 )
+			deuda = 0
+		else{
+			deuda += dinero*(-1)
+			dinero=0	
+		}
+		
+	}
+	method gastar(cuanto) { 
+		dinero -= cuanto
+		if( dinero < 0 ){
+			deuda += dinero*(-1)
+			dinero = 0
+		}
+	}
 	
 }
 
@@ -31,7 +50,7 @@ object baigorria {
 	
 	method calculoSueldo() { sueldo = empanadasVendidas * precioPorEmpanada}
 	
-	method cobrarMes() { 
+	method cobrarSueldo() { 
 		self.acumularSueldo(sueldo)
 		sueldo = 0
 		empanadasVendidas = 0
@@ -47,7 +66,7 @@ object gimenez {
 	
 	method pagarSueldo(empleado){
 		fondoSueldos -= empleado.sueldo()
-		empleado.cobrarMes() 
+		empleado.cobrarSueldo() 
 	}
 	
 }
