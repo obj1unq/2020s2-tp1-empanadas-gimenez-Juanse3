@@ -9,12 +9,11 @@ object galvan {
 	
 	method cambiarSueldo(nuevoSueldo) { sueldo = nuevoSueldo }
 	method cobrarSueldo() { 
-		dinero += (sueldo - deuda)
-		if ( dinero > 0 )
-			deuda = 0
+		if ( (dinero + sueldo) < deuda )
+			deuda -= (dinero + sueldo) 
 		else{
-			deuda += dinero*(-1)
-			dinero=0	
+			dinero +=(sueldo-deuda)
+			deuda=0	
 		}
 		
 	}
